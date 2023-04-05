@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Button;
-import android.view.View;
+
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,27 +24,31 @@ public class MainActivity extends AppCompatActivity {
         buttonReset = (Button) findViewById(R.id.buttonReset);
 
         /* Submit Button */
-        buttonSubmit.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
+        buttonSubmit.setOnClickListener(v -> {
+            if(editName.getText().toString().trim().length()==0||
+                    editPassword.getText().toString().trim().length()==0)
+            {
+                tvResult.setText(getString(R.string.error));
+            }
+            else
             {
                 String name = editName.getText().toString();
                 String password = editPassword.getText().toString();
-                tvResult.setText("Name:\t"+name+"\nPassword:\t"+password+"\nData Successfully Submitted for Conference Management");
+
+
+                tvResult.setText(getString(R.string.op)+name+getString(R.string.oppass)+password+getString(R.string.success));
             }
+
+
+
         });
 
         /* reset Button */
-        buttonReset.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v)
-            {
-                editName.setText("");
-                editPassword.setText("");
-                tvResult.setText("");
-                editName.requestFocus();
-            }
+        buttonReset.setOnClickListener(v -> {
+            editName.setText("");
+            editPassword.setText("");
+            tvResult.setText("");
+            editName.requestFocus();
         });
     }
 }

@@ -6,4 +6,8 @@
     <string name="password">Password :</string>
     <string name="reset">Reset</string>
     <string name="submit">Submit</string>
+    <string name="op">Name:\t</string>
+    <string name="oppass">\nPassword:\t</string>
+    <string name="success">\nData Successfully Submitted for Conference Management</string>
+    <string name="error">Error Please enter all values</string>
 </resources>
